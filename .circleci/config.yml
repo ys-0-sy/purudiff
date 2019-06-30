@@ -7,7 +7,10 @@ jobs:
       - checkout
       - run:
           name: npm install
-          command : npm install
+          command: npm install
+      - run:
+          name: build
+          command: npm run build
       - run:
           name: deploy
           command: ./node_modules/.bin/firebase deploy --token=$FIREBAASE_TOKEN

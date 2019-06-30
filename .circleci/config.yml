@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  deploy_dev:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - run:
+          name: npm install
+          command : npm install
+      - run:
+          name: deploy
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBAASE_TOKEN
+
+workflows:
+  version: 2
+  deploy_dev:
+    jobs:
+      - deploy_dev:
+          filters:
+            branches:
+              only: develop
+

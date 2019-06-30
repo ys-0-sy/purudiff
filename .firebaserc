@@ -1,5 +1,6 @@
 {
   "projects": {
-    "purudiff": "puru-aaaf6"
+    "purudiff": "puru-aaaf6",
+    "default": "puru-aaaf6"
   }
 }

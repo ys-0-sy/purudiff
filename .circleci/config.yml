@@ -12,6 +12,9 @@ jobs:
           name: build
           command: npm run build
       - run:
+          name: generate
+          command: npm run generate
+      - run:
           name: deploy
           command: ./node_modules/.bin/firebase deploy --token=$FIREBAASE_TOKEN
 

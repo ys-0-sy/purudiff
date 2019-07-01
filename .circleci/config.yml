@@ -58,7 +58,7 @@ jobs:
           command: ./node_modules/.bin/firebase deploy --token=$FIREBAASE_TOKEN
 
 workflows:
-  linting:
+  deploy:
     jobs:
       - setup
       - lint:
@@ -66,7 +66,7 @@ workflows:
             - setup
       - generate:
           requires:
-            - setup
+            - lint
           filters:
             branches:
               only: master

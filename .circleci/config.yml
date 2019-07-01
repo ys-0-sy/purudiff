@@ -43,6 +43,19 @@ jobs:
       - run:
           name: Run lint
           command: npm run lint
+  
+  deploy:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_npm
+      - run:
+          name: generate statics
+          command: npm run generate
+      - run:
+          name: deploy
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBAASE_TOKEN
 
 workflows:
   linting:
@@ -51,4 +64,11 @@ workflows:
       - lint:
           requires:
             - setup
+      - generate:
+          requires:
+            - setup
+          filters:
+            branches:
+              only: master
+
 

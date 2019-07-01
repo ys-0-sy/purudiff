@@ -55,7 +55,7 @@ jobs:
           command: npm run generate
       - run:
           name: deploy
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBAASE_TOKEN
+          command: firebase deploy --token=$FIREBAASE_TOKEN
 
 workflows:
   lint-deploy:
@@ -67,6 +67,6 @@ workflows:
       - deploy:
           requires:
             - lint
-          filters:
-            branches:
-              only: master
+          # filters:
+          #   branches:
+          #     only: master

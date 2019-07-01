@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Run lint
           command: npm run lint
-  
+
   host_deploy:
     executor:
       name: default
@@ -61,7 +61,7 @@ jobs:
           command: npm run generate
       - run:
           name: deploy
-          command: ./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN
+          command: ./functions/node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN
 
   function_deploy:
     executor:

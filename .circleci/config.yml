@@ -33,6 +33,12 @@ jobs:
       - run:
           name: Install npm dependencies
           command: npm ci
+      - run:
+          name: Install npm
+          command: cd functions && npm install
+      - run:
+          name: install firebase-tools
+          command: npm install -D firebase-tools
       - save_npm
   lint:
     executor:

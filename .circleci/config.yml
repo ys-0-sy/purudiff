@@ -27,7 +27,6 @@ jobs:
   setup:
     executor:
       name: default
-
     steps:
       - checkout
       - restore_npm
@@ -35,20 +34,21 @@ jobs:
           name: Install npm dependencies
           command: npm ci
       - save_npm
-      lint:
-        executor:
-          name: default
-        steps:
-          - checkout
-          - restore_npm
-          - run 
-              name: Run lint
-              command: npm run lint
-              
+  lint:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_npm
+      - run:
+          name: Run lint
+          command: npm run lint
+
 workflows:
   linting:
     jobs:
       - setup
       - lint:
-        requires:
+          requires:
+            - setup
 

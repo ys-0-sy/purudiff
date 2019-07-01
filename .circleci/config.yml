@@ -88,5 +88,5 @@ workflows:
           requires:
             - setup
       - function_deploy:
-          require:
+          requires:
             - lint

@@ -44,7 +44,7 @@ jobs:
           name: Run lint
           command: npm run lint
   
-  deploy:
+  host_deploy:
     executor:
       name: default
     steps:
@@ -55,18 +55,38 @@ jobs:
           command: npm run generate
       - run:
           name: deploy
-          command: firebase deploy --token=$FIREBAASE_TOKEN
+          command: ./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN
+
+  function_deploy:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_npm
+      - run:
+          name: deploy
+          command: ./node_modules/.bin/firebase deploy --only functions --token=$FIREBASE_TOKEN
 
 workflows:
-  lint-deploy:
+  hosting-deploy:
     jobs:
       - setup
       - lint:
           requires:
             - setup
-      - deploy:
+      - host_deploy:
           requires:
             - lint
           # filters:
           #   branches:
           #     only: master
+
+  function-deploy:
+    jobs:
+      - setup
+      - lint:
+          requires:
+            - setup
+      - function_deploy:
+          require:
+            - lint

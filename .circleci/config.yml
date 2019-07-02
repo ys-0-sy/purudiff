@@ -14,12 +14,15 @@ commands:
     steps:
       - restore_cache:
           name: Restore npm dependencies
-          key: npm-v1-{{ checksum "package-lock.json" }}
+          keys: 
+            - npm-v1-{{ checksum "package-lock.json" }}
+            - npm-v1-
   save_npm:
     steps:
       - save_cache:
           name: Cache npm dependencies
-          key: npm-v1-{{ checksum "package-lock.json" }}
+          key: 
+            - npm-v1-{{ checksum "package-lock.json" }}
           paths:
             - ~/repo/node_modules
             - ~/repo/functions/node_modules
@@ -37,9 +40,6 @@ jobs:
       - run:
           name: Install npm
           command: cd functions && npm ci
-      - run:
-          name: install firebase-tools
-          command: npm install -D firebase-tools
       - save_npm
   lint:
     executor:
@@ -73,9 +73,6 @@ jobs:
     steps:
       - checkout
       - restore_npm
-      - run:
-          name: npm install
-          command: cd functions && npm install  
       - run:
           name: deploy
           command: ./functions/node_modules/.bin/firebase deploy --only functions --token=$FIREBASE_TOKEN

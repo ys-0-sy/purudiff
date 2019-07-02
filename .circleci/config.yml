@@ -48,9 +48,6 @@ jobs:
       - checkout
       - restore_npm
       - run:
-          name: Npm install test
-          command: npm install
-      - run:
           name: Run lint
           command: npm run lint
 

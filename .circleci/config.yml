@@ -13,7 +13,7 @@ commands:
   restore_npm:
     steps:
       - restore_cache:
-          keys: 
+          key: 
             - npm-v1-{{ checksum "package-lock.json }}-{{ checksum "./functions/package-lock.json" }}
             - npm-v1-{{ checksum "package-lock.json" }}
             - npm-v1

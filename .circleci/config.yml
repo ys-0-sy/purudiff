@@ -89,4 +89,4 @@ workflows:
           #     only: master
       - function_deploy:
           requires:
-            - lint
+            - setup

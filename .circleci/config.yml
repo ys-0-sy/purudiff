@@ -84,9 +84,12 @@ workflows:
       - host_deploy:
           requires:
             - lint
-          # filters:
-          #   branches:
-          #     only: master
+          filters:
+            branches:
+              only: master
       - function_deploy:
           requires:
             - setup
+          filters:
+            branches:
+              only: master

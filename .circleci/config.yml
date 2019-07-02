@@ -13,15 +13,16 @@ commands:
   restore_npm:
     steps:
       - restore_cache:
+          name: Restpre npm dependencies
           keys: 
-            - npm-v1-{{ checksum "package-lock.json }}-{{ checksum "./functions/package-lock.json" }}
+            - npm-v1-{{ checksum "package-lock.json }}-{{ checksum "functions/package-lock.json" }}
             - npm-v1-{{ checksum "package-lock.json" }}
             - npm-v1
   save_npm:
     steps:
       - save_cache:
           name: Cache npm dependencies
-          key: npm-v1-{{ checksum "package-lock.json" }}-{{ checksum "./functions/package-lock.json" }}
+          key: npm-v1-{{ checksum "package-lock.json" }}-{{ checksum "functions/package-lock.json" }}
           paths:
             - ~/repo/node_modules
             - ~/repo/functions/node_modules

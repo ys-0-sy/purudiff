@@ -1,75 +1,68 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-xs-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a href="https://vuetifyjs.com" target="_blank"> documentation </a>.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a href="https://chat.vuetifyjs.com/" target="_blank" title="chat">
-              discord
-            </a>
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-            >
-              issue board
-            </a>
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a href="https://nuxtjs.org/" target="_blank">
-            Nuxt Documentation
-          </a>
-          <br />
-          <a href="https://github.com/nuxt/nuxt.js" target="_blank">
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" flat nuxt to="/inspire">
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <v-container fluid>
+    <v-layout row>
+      <v-flex xs6 order-lg2>
+        <v-textarea name="textbox1" label="text1" :value="textbox1" />
+      </v-flex>
+      <v-flex xs6 order-lg2>
+        <v-textarea name="textbox2" label="text2" :value="textbox2" />
+      </v-flex>
+    </v-layout>
+    <v-layout row>
+      <v-btn large @click="diffText()">
+        Diff
+      </v-btn>
+    </v-layout>
+    <v-layout row>
+      <v-container>
+        <v-flex xs6 order-lg2>
+          <span
+            v-for="item in difftext1"
+            :key="item.value"
+            :class="{ red: item.removed, blue: item.added }"
+          >
+            {{ item.value }}
+          </span>
+        </v-flex>
+        <v-flex xs6 order-lg2>
+          <span>{{ difftext1 }}</span>
+          <span>{{ difftext2 }}</span>
+        </v-flex>
+      </v-container>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import * as Jsdiff from 'diff'
 
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
+  data() {
+    return {
+      textbox1: 'sample text1',
+      textbox2: 'sample text2',
+      difftext1: '',
+      difftext2: 'text2'
+    }
+  },
+  methods: {
+    diffText() {
+      this.difftext1 = Jsdiff.diffWords(this.textbox1, this.textbox2)
+    }
   }
 }
 </script>
+
+<style module>
+.bold {
+  font-weight: bold;
+}
+
+.red {
+  color: red lighten-2;
+}
+
+.bule {
+  color: blue lighten-2;
+}
+</style>

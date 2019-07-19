@@ -6,6 +6,7 @@
           v-model="textbox1"
           name="textbox1"
           label="text1"
+          auto-grow
           @input="diffText"
         />
       </v-flex>
@@ -14,6 +15,7 @@
           v-model="textbox2"
           name="textbox2"
           label="text2"
+          auto-grow
           @input="diffText"
         />
       </v-flex>

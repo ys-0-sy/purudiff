@@ -36,12 +36,16 @@
         <span
           v-for="item in difftext2"
           :key="item.value"
-          :class="{
-            'green lighten-2': item.added
-          }"
+          :class="[
+            {
+              'green lighten-2': item.added
+            },
+            buruburu
+          ]"
         >
           {{ item.value }}
         </span>
+        <span class="shake">test</span>
       </v-container>
     </v-layout>
     <v-layout row>
@@ -59,6 +63,7 @@
 
 <script>
 import * as Jsdiff from 'diff'
+import 'csshake'
 
 export default {
   data() {
@@ -84,3 +89,30 @@ export default {
   }
 }
 </script>
+
+<style module>
+@import 'csshake';
+
+.buruburu {
+  display: inline-block;
+  animation: hurueru 0.1s infinite;
+}
+
+@keyframes hurueru {
+  0% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+  25% {
+    transform: translate(2px, 2px) rotateZ(1deg);
+  }
+  50% {
+    transform: translate(0px, 2px) rotateZ(0deg);
+  }
+  75% {
+    transform: translate(2px, 0px) rotateZ(-1deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotateZ(0deg);
+  }
+}
+</style>

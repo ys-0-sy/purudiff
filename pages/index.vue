@@ -63,7 +63,6 @@
 
 <script>
 import * as Jsdiff from 'diff'
-import 'csshake'
 
 export default {
   data() {
@@ -91,7 +90,6 @@ export default {
 </script>
 
 <style module>
-@import 'csshake';
 
 .buruburu {
   display: inline-block;

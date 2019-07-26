@@ -8,8 +8,7 @@ module.exports = {
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
-    meta: [
-      {
+    meta: [{
         charset: 'utf-8'
       },
       {
@@ -22,16 +21,14 @@ module.exports = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [
-      {
+    link: [{
         rel: 'icon',
         type: 'image/x-icon',
         href: '/favicon.ico'
       },
       {
         rel: 'stylesheet',
-        href:
-          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+        href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
       }
     ]
   },
@@ -75,7 +72,7 @@ module.exports = {
       secondary: colors.amber.darken3,
       info: colors.teal.lighten1,
       warning: colors.amber.base,
-      error: colors.deepOrange.accent4,
+      error: colors.deepOrange.accensyt4,
       success: colors.green.accent3
     }
   },
@@ -87,5 +84,19 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  manifest: {
+    name: 'purudiff',
+    lang: 'ja',
+    short_name: 'puru',
+    title: 'purudiff ﾌﾟﾙﾃﾞｨﾌ',
+    'og:title': 'purudiff ﾌﾟﾙﾃﾞｨﾌ',
+    description: 'purudiff ﾌﾟﾙﾃﾞｨﾌ',
+    'og:desciption': 'purudiff ﾌﾟﾙﾃﾞｨﾌ',
+    theme_color: '#ffffff',
+    background_dolor: '#ffffff'
+  },
+  workbox: {
+    dev: true
   }
 }

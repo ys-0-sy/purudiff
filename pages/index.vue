@@ -40,12 +40,12 @@
             {
               'green lighten-2': item.added
             },
-            buruburu
+            'shake',
+            'shake-constant'
           ]"
         >
           {{ item.value }}
         </span>
-        <span class="shake">test</span>
       </v-container>
     </v-layout>
     <v-layout row>
@@ -89,8 +89,8 @@ export default {
 }
 </script>
 
-<style module>
-
+<style lang="scss">
+@import 'csshake';
 .buruburu {
   display: inline-block;
   animation: hurueru 0.1s infinite;

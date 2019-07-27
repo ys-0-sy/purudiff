@@ -3,21 +3,25 @@
     <v-layout row>
       <v-flex
         xs6
-        order-lg2>
+        order-lg2
+      >
         <v-textarea
           v-model="textBox1"
           name="textbox1"
           label="text1"
-          auto-grow />
+          auto-grow
+        />
       </v-flex>
       <v-flex
         xs6
-        order-lg2>
+        order-lg2
+      >
         <v-textarea
           v-model="textBox2"
           name="textbox2"
           label="text2"
-          auto-grow />
+          auto-grow
+        />
       </v-flex>
     </v-layout>
     <v-layout row>
@@ -27,7 +31,8 @@
           :key="item.value"
           :class="{
             'red lighten-2 shake shake-constant': item.removed
-          }">
+          }"
+        >
           {{ item.value }}
         </span>
       </v-container>
@@ -39,7 +44,8 @@
             {
               'green lighten-2 shake shake-constant': item.added
             }
-          ]">
+          ]"
+        >
           {{ item.value }}
         </span>
       </v-container>

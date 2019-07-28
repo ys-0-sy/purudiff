@@ -1,7 +1,7 @@
 const colors = require('vuetify/es5/util/colors').default
 
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
@@ -9,8 +9,13 @@ module.exports = {
     titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        charset: 'utf-8'
+      },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1'
+      },
       {
         hid: 'description',
         name: 'description',
@@ -18,7 +23,11 @@ module.exports = {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
       {
         rel: 'stylesheet',
         href:
@@ -29,7 +38,9 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: {
+    color: '#fff'
+  },
   /*
    ** Global CSS
    */
@@ -46,7 +57,8 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/style-resources'
   ],
   /*
    ** Axios module configuration
@@ -64,7 +76,7 @@ module.exports = {
       secondary: colors.amber.darken3,
       info: colors.teal.lighten1,
       warning: colors.amber.base,
-      error: colors.deepOrange.accent4,
+      error: colors.deepOrange.accensyt4,
       success: colors.green.accent3
     }
   },
@@ -76,5 +88,19 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  manifest: {
+    name: 'purudiff',
+    lang: 'ja',
+    short_name: 'puru',
+    title: 'purudiff ﾌﾟﾙﾃﾞｨﾌ',
+    'og:title': 'purudiff ﾌﾟﾙﾃﾞｨﾌ',
+    description: 'purudiff ﾌﾟﾙﾃﾞｨﾌ',
+    'og:desciption': 'purudiff ﾌﾟﾙﾃﾞｨﾌ',
+    theme_color: '#ffffff',
+    background_dolor: '#ffffff'
+  },
+  workbox: {
+    dev: true
   }
 }

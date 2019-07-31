@@ -1,7 +1,7 @@
 const colors = require('vuetify/es5/util/colors').default
 
 module.exports = {
-  mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -58,7 +58,8 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/ngrok'
   ],
   /*
    ** Axios module configuration

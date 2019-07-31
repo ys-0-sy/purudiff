@@ -51,7 +51,7 @@ jobs:
           name: Run lint
           command: npm run lint
 
-  host_deploy:
+  staging_deploy:
     executor:
       name: default
     steps:
@@ -61,18 +61,27 @@ jobs:
           name: generate statics
           command: npm run build
       - run:
+          name: setting alias
+          command: ./node_modules/.bin/firebase use staging
+      - run:
           name: deploy
           command: ./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN
 
-  function_deploy:
+  release_deploy:
     executor:
       name: default
     steps:
       - checkout
       - restore_npm
       - run:
+          name: generate statics
+          command: npm run build
+      - run:
+          name: setting alias
+          command: ./node_modules/.bin/firebase use default
+      - run:
           name: deploy
-          command: ./functions/node_modules/.bin/firebase deploy --only functions --token=$FIREBASE_TOKEN
+          command: ./node_modules/.bin/firebase deploy --only hosting --token=$FIREBASE_TOKEN
 
 workflows:
   build-deploy:
@@ -81,15 +90,15 @@ workflows:
       - lint:
           requires:
             - setup
-      - host_deploy:
+      - release_deploy:
           requires:
             - lint
           filters:
             branches:
               only: master
-      - function_deploy:
+      - staging_deploy:
           requires:
-            - setup
+            - lint
           filters:
             branches:
-              only: master
+              only: develop

@@ -26,7 +26,7 @@ export default {
     replacer(item) {
       const text = item.value
       const isBlank = text.replace(/\n/g, '').length === 0
-      return text.replace(/\n/g, isBlank && item.removed ? '[←]<br>' : '<br>')
+      return text.replace(/\n/g, isBlank && (item.removed || item.added) ? '[←]<br>' : '<br>')
     }
   }
 }

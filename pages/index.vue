@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-layout row>
-      <v-flex
+      <v-card
         style="padding :8px"
         xs6
         order-lg2
@@ -15,8 +15,8 @@
           counter
         />
         <WordContainer :diff-text="diffText1" />
-      </v-flex>
-      <v-flex
+      </v-card>
+      <v-card
         style="padding :8px"
         xs6
         order-lg2
@@ -30,7 +30,7 @@
           counter
         />
         <WordContainer :diff-text="diffText2" />
-      </v-flex>
+      </v-card>
     </v-layout>
   </v-container>
 </template>

@@ -35,6 +35,6 @@ export default {
 <style lang="scss" scoped>
 @import 'csshake';
 .word-container {
-  display: inline;
+  display: inline-block;
 }
 </style>

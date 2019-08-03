@@ -1,9 +1,12 @@
 <template>
-  <v-container fluid>
-    <v-layout justify-center row>
+  <v-container
+    fluid
+    grid-list-md
+    pa-2
+  >
+    <v-layout justify-center>
       <v-flex
         xs6
-        order-lg2
       >
         <v-card
           style="padding :8px"
@@ -21,7 +24,6 @@
       </v-flex>
       <v-flex
         xs6
-        order-lg2
       >
         <v-card
           style="padding :8px"

@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-flex style="padding :8px">
     <span
       v-for="(item, idx) in diffText"
       :key="idx"
@@ -11,7 +11,7 @@
     >
       <span v-html="replacer(item)" />
     </span>
-  </v-card>
+  </v-flex>
 </template>
 
 <script>

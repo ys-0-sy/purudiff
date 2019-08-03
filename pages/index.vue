@@ -1,36 +1,42 @@
 <template>
   <v-container fluid>
-    <v-layout row>
-      <v-card
-        style="padding :8px"
+    <v-layout justify-center row>
+      <v-flex
         xs6
         order-lg2
       >
-        <v-textarea
-          v-model="textBox1"
-          name="textbox1"
-          label="text1"
-          rows="7"
-          outline
-          counter
-        />
-        <WordContainer :diff-text="diffText1" />
-      </v-card>
-      <v-card
-        style="padding :8px"
+        <v-card
+          style="padding :8px"
+        >
+          <v-textarea
+            v-model="textBox1"
+            name="textbox1"
+            label="text1"
+            rows="7"
+            outline
+            counter
+          />
+          <WordContainer :diff-text="diffText1" />
+        </v-card>
+      </v-flex>
+      <v-flex
         xs6
         order-lg2
       >
-        <v-textarea
-          v-model="textBox2"
-          name="textbox2"
-          label="text2"
-          rows="7"
-          outline
-          counter
-        />
-        <WordContainer :diff-text="diffText2" />
-      </v-card>
+        <v-card
+          style="padding :8px"
+        >
+          <v-textarea
+            v-model="textBox2"
+            name="textbox2"
+            label="text2"
+            rows="7"
+            outline
+            counter
+          />
+          <WordContainer :diff-text="diffText2" />
+        </v-card>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>

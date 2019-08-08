@@ -60,9 +60,22 @@ export default {
   computed: {
     // eslint-disable-next-line prettier/prettier
     diffText1() {
-      return Jsdiff.diffChars(this.textBox1, this.textBox2).filter((words) => {
+      const wordsArray = Jsdiff.diffChars(this.textBox1, this.textBox2).filter((words) => {
         return !words.added
       })
+      const newArray = []
+      wordsArray.forEach(function (item, index, array) {
+        const arr = item.value.match(/[\s\S]{1}/g) || []
+        arr.forEach(function (item2, index, array) {
+          const hasSpace = item2[0] === ' ' || String(arr[index - 1]).slice(-1) === ' '
+          const newWords = { count: item2.length, value: item2, hasSpace, added: item.added, removed: item.removed }
+          newArray.push(newWords)
+          console.log(newWords)
+        })
+        console.log(arr)
+      })
+      console.log(newArray)
+      return newArray
     },
     diffText2() {
       return Jsdiff.diffChars(this.textBox1, this.textBox2).filter((words) => {

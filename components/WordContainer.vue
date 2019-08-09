@@ -1,19 +1,22 @@
 <template>
   <v-flex style="padding :8px">
-    <div>
-      <span
-        v-for="(item, idx) in diffText"
-        :key="idx"
-        class="word-container"
-        :class="{
-          'text-indenter': item.hasSpace,
-          'red lighten-2 shake shake-constant': item.removed,
-          'green lighten-2 shake shake-constant': item.added,
-        }"
-      >
+    <span
+      v-for="(item, idx) in diffText"
+      :key="idx"
+      class="word-container"
+      :class="{
+        'text-indenter': item.hasSpace,
+        'red lighten-2 shake shake-constant': item.removed,
+        'green lighten-2 shake shake-constant': item.added,
+      }"
+    >
+      <span v-if="!isBlank(item)">
         {{ replacer(item) }}
       </span>
-    </div>
+      <div v-if="isBlank(item)">
+        {{ replacer(item) }}
+      </div>
+    </span>
   </v-flex>
 </template>
 

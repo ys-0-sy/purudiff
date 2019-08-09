@@ -72,8 +72,8 @@ export default {
   },
   methods: {
     parseText(wordsArray) {
-      const charArray = wordsArray.map((item) => {
-        const values = item.value.match(/[\s\S]{1,1}/g) || []
+      return wordsArray.map((item) => {
+        const values = item.value.match(/[\s\S]{1,5}/g) || []
         return values.map((valuesItem, valuesIndex) => {
           return {
             count: valuesItem.count,
@@ -85,7 +85,6 @@ export default {
         })
       })
         .reduce((pre, current) => { pre.push(...current); return pre }, [])
-      return charArray
     }
   }
 }

@@ -60,27 +60,32 @@ export default {
   computed: {
     // eslint-disable-next-line prettier/prettier
     diffText1() {
-      const wordsArray = Jsdiff.diffChars(this.textBox1, this.textBox2).filter((words) => {
+      return this.parseText(Jsdiff.diffChars(this.textBox1, this.textBox2).filter((words) => {
         return !words.added
-      })
-      const newArray = []
-      wordsArray.forEach(function (item, index, array) {
-        const arr = item.value.match(/[\s\S]{1}/g) || []
-        arr.forEach(function (item2, index, array) {
-          const hasSpace = item2[0] === ' ' || String(arr[index - 1]).slice(-1) === ' '
-          const newWords = { count: item2.length, value: item2, hasSpace, added: item.added, removed: item.removed }
-          newArray.push(newWords)
-          console.log(newWords)
-        })
-        console.log(arr)
-      })
-      console.log(newArray)
-      return newArray
+      }))
     },
     diffText2() {
-      return Jsdiff.diffChars(this.textBox1, this.textBox2).filter((words) => {
+      return this.parseText(Jsdiff.diffChars(this.textBox1, this.textBox2).filter((words) => {
         return !words.removed
+      }))
+    }
+  },
+  methods: {
+    parseText(wordsArray) {
+      const charArray = wordsArray.map((item) => {
+        const values = item.value.match(/[\s\S]{1,1}/g) || []
+        return values.map((valuesItem, valuesIndex) => {
+          return {
+            count: valuesItem.count,
+            value: valuesItem,
+            hasSpace: valuesItem[0] === ' ' || String(values[valuesIndex - 1]).slice(-1) === ' ',
+            added: item.added,
+            removed: item.removed
+          }
+        })
       })
+        .reduce((pre, current) => { pre.push(...current); return pre }, [])
+      return charArray
     }
   }
 }
